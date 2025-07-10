@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Scroll efektini yumuşat */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Temaya göre arkaplan ve metin rengi */
+body {
+  @apply bg-white text-black dark:bg-gray-900 dark:text-white;
+}
