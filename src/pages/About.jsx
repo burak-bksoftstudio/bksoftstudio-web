@@ -6,41 +6,50 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen py-24 px-6 md:px-24 bg-white dark:bg-gray-900"
+      className="py-16 px-6 md:px-20 bg-white dark:bg-gray-900 transition-colors duration-300"
     >
       <motion.div
-        className="max-w-3xl mx-auto"
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        className="max-w-3xl mx-auto text-center"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
+        {/* 🔹 Üstte ikon */}
+        <motion.div
+          className="text-4xl mb-3"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.1, duration: 0.4 }}
+        >
+          💡
+        </motion.div>
+
         <motion.h2
-          className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-10"
+          className="text-4xl sm:text-5xl font-extrabold tracking-tight 
+                     text-gray-900 dark:text-white mb-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
           viewport={{ once: true }}
         >
-          Hakkımda
+          Hakkımızda
         </motion.h2>
 
         <motion.p
-          className="text-lg leading-8 text-gray-700 dark:text-gray-300"
+          className="text-base sm:text-lg leading-7 text-gray-800 dark:text-gray-300 max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <span className="text-xl font-semibold text-black dark:text-white">
-            Merhaba! Ben <strong>Burak Kırış</strong>.
-          </span>{' '}
-          Yapay zeka, frontend, test otomasyonu ve yazılım mühendisliği konularında üretken projeler
-          geliştiren bir yazılım geliştiricisiyim.
+          <strong>BK SoftStudio</strong>, Samsun merkezli bir yazılım ve medya stüdyosudur. 
+          4 yıldır; web tasarım, mobil uygulama, sosyal medya yönetimi, 
+          video & drone çekimi, 3D baskı ve özel yazılım projeleri ile 
+          işletmelere yenilikçi dijital çözümler sunuyoruz.
           <br /><br />
-          No-Code platformlardan Selenium tabanlı test agentlarına kadar birçok alanda yenilikçi
-          çözümler geliştirdim. Kullanıcı deneyimi, sade tasarım ve yüksek performansı öncelik alarak
-          çalışırım.
+          Ekibimiz, her projede modern tasarım, yüksek performans ve 
+          yaratıcı yaklaşımlarla işletmenize değer katmayı hedefler.
         </motion.p>
       </motion.div>
     </section>

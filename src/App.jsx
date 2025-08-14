@@ -3,13 +3,12 @@ import { ParallaxProvider } from 'react-scroll-parallax'
 
 import ScrollIndicator from './components/ScrollIndicator'
 import NavMenu from './components/NavMenu'
-import Footer from './components/Footer'
+import FloatingContactButton from './components/FloatingContactButton' // ✅ Yeni eklendi
 
 // Sayfalar
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
-
 import Projects from './pages/Projects'
 import References from './pages/References'
 import Contact from './pages/Contact'
@@ -30,13 +29,12 @@ const App = () => {
           <Home />
           <About />
           <Services />
-
           <Projects />
           <References />
           <Contact />
 
-          {/* Footer */}
-          <Footer />
+          {/* ✅ Sabit İletişim Butonu */}
+          <FloatingContactButton />
         </main>
       </div>
     </ParallaxProvider>

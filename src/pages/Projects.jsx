@@ -1,4 +1,3 @@
-// src/components/Projects.jsx
 import React from 'react'
 import Tilt from 'react-parallax-tilt'
 import { motion } from 'framer-motion'
@@ -29,14 +28,14 @@ const Projects = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="min-h-screen py-24 px-6 md:px-24 bg-gray-50 dark:bg-gray-900"
+      className="py-16 px-6 md:px-24 bg-gray-50 dark:bg-gray-900" // ⬅️ Daha az boşluk
     >
       <motion.h2
         initial={{ y: 20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-16"
+        className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-12"
       >
         🚀 Projelerim
       </motion.h2>
