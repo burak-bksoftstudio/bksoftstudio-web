@@ -5,7 +5,7 @@ import { FiMail } from "react-icons/fi";
 const FloatingContactButton = () => {
   return (
     <motion.a
-      href="#contact" // Burayı ister mailto:mail@adres.com yapabilirsin
+      href="contact@bksoftstudio.com" // Burayı ister mailto:mail@adres.com yapabilirsin
       initial={{ y: 0 }}
       animate={{ y: [0, -5, 0] }} // Yukarı aşağı yumuşak hareket
       transition={{

@@ -9,7 +9,7 @@ import FloatingContactButton from './components/FloatingContactButton' // ✅ Ye
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
-import Projects from './pages/Projects'
+//import Projects from './pages/Projects'
 import References from './pages/References'
 import Contact from './pages/Contact'
 
@@ -29,7 +29,6 @@ const App = () => {
           <Home />
           <About />
           <Services />
-          <Projects />
           <References />
           <Contact />
 

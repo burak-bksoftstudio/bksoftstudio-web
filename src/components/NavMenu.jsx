@@ -28,13 +28,13 @@ const NavMenu = () => {
 
       {/* 🔗 Sosyal Medya + Tema */}
       <div className="flex flex-col items-center space-y-4">
-        <a href="https://instagram.com/burakkiris" target="_blank" rel="noreferrer">
+        <a href="https://instagram.com/bksoftstudio" target="_blank" rel="noreferrer">
           <FaInstagram className="hover:text-gray-400" />
         </a>
         <a href="https://github.com/burakkiris" target="_blank" rel="noreferrer">
           <FaGithub className="hover:text-gray-400" />
         </a>
-        <a href="https://linkedin.com/in/burakkiris" target="_blank" rel="noreferrer">
+        <a href="https://linkedin.com/in/burakeneskiris" target="_blank" rel="noreferrer">
           <FaLinkedin className="hover:text-gray-400" />
         </a>
 

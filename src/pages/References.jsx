@@ -10,10 +10,10 @@ const references = [
       'BK SoftStudio ile web sitemizi tam istediğimiz tasarım ve profesyonellikte hayata geçirdik. Ayrıca sosyal medya yönetimi için de birlikte çalışmaya başladık. Tüm süreç boyunca iletişimde kalarak sorunsuz ve keyifli bir iş birliği sağladık.',
   },
   {
-    name: 'Fatih Kırış',
-    title: 'FK Yapı İnşaat',
+    name: 'Murat Akdere',
+    title: 'Başak Fındık',
     content:
-      'BK SoftStudio ekibiyle sosyal medya tarafında hem reklam hem de post içerikleri oluşturduk. Ayrıca drone çekimleri ve daire tanıtım videoları gibi görsel projelerde de kusursuz hizmet aldık.',
+      'BK SoftStudio ekibiyle yaptığımız olumlu görüşmeler sonrası web sitemizi hem zamanında hem de isteklerimiz doğrultusunda bi çalışmayla teslim aldık ve sorunsuz olarak kullanıyoruz.',
   },
   {
     name: 'Latif Sarıcaoğlu',

@@ -12,7 +12,7 @@ const Footer = () => {
       className="bg-gray-100 dark:bg-gray-800 text-center py-6 mt-12"
     >
       <p className="text-sm text-gray-600 dark:text-gray-400">
-        &copy; {new Date().getFullYear()} Burak Kırış. Tüm hakları saklıdır.
+        &copy; {new Date().getFullYear()} BKSoftStudio. Tüm hakları saklıdır.
       </p>
       <div className="mt-3 flex justify-center space-x-6">
         <a
@@ -24,7 +24,7 @@ const Footer = () => {
           GitHub
         </a>
         <a
-          href="https://linkedin.com/in/burakkiris"
+          href="https://linkedin.com/in/burakeneskiris"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
