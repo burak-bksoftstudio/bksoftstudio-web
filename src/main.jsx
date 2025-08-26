@@ -1,25 +1,44 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
 
 // 🔥 AOS (Animate On Scroll)
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // 🌌 Parallax Provider
-import { ParallaxProvider } from 'react-scroll-parallax'
+import { ParallaxProvider } from "react-scroll-parallax";
 
-// ✅ Uygulama ilk açıldığında dark mode'u aktif et
-document.documentElement.classList.add('dark')
+// ✅ Uygulama ilk açıldığında dark mode aktif
+document.documentElement.classList.add("dark");
 
-// AOS'u başlat
-AOS.init()
+// AOS başlat
+AOS.init({
+  duration: 600,
+  easing: "ease-out-cubic",
+  once: true, // her öğe 1 defa animasyon yapsın
+});
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// React render
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ParallaxProvider>
       <App />
     </ParallaxProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
+
+// 🚀 PWA Service Worker kaydı
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then(() => {
+        console.log("Service Worker kayıt başarılı ✅");
+      })
+      .catch((err) => {
+        console.warn("Service Worker kaydı başarısız:", err);
+      });
+  });
+}

@@ -1,26 +1,17 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { FiMail } from "react-icons/fi";
 
-const FloatingContactButton = () => {
+export default function FloatingContactButton() {
   return (
     <motion.a
-      href="contact@bksoftstudio.com" // Burayı ister mailto:mail@adres.com yapabilirsin
-      initial={{ y: 0 }}
-      animate={{ y: [0, -5, 0] }} // Yukarı aşağı yumuşak hareket
-      transition={{
-        duration: 1.5,
-        repeat: Infinity,
-        repeatType: "loop",
-      }}
-      className="fixed bottom-6 right-6 z-50 bg-indigo-600 text-white 
-                 flex items-center gap-2 px-4 py-2 rounded-full 
-                 shadow-lg hover:bg-indigo-700 hover:scale-105 transition-transform"
+      href="mailto:contact@bksoftstudio.com?subject=Teklif%20ve%20İletişim&body=Merhaba%20BK%20SoftStudio%2C%0A%0AProjeme%20dair%20..."
+      aria-label="E-posta ile iletişime geçin"
+      className="fixed right-4 bottom-4 z-40 inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-medium
+                 bg-white/10 hover:bg-white/20 text-white backdrop-blur border border-white/10 shadow-lg
+                 transition-colors"
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.98 }}
     >
-      <FiMail className="text-xl" />
-      <span className="font-semibold text-sm">İletişime Geçin</span>
+      İletişime Geçin
     </motion.a>
   );
-};
-
-export default FloatingContactButton;
+}

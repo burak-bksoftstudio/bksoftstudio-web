@@ -21,3 +21,75 @@ body {
 body::-webkit-scrollbar {
   display: none;                  /* Chrome/Safari */
 }
+/* Yumuşak kaydırma ve mobilde safe-area */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:root {
+  /* iOS çentik / safe area */
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+}
+body {
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Responsive okuma genişliği */
+main > section { margin-block: 48px; }
+@media (min-width: 1024px) {
+  main > section { margin-block: 64px; }
+}
+
+/* iOS safe area */
+:root { --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom); }
+body { padding-top: var(--safe-top); padding-bottom: var(--safe-bottom); }
+
+/* ==== Desktop yardımcıları (mobil etkilenmez) ==== */
+@media (min-width: 1024px) {
+  /* Yan bar 36 (9rem) olduğunda, kalan alanı tam kapla */
+  .bleed-after-sidebar {
+    position: relative;
+    left: 9rem;                   /* lg:pl-36 ile eşleşir */
+    width: calc(100vw - 9rem);    /* yan bar sonrası tüm genişlik */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* Tam ekran "bleed" gerekirse (bu projede gerek kalmadı ama dursun) */
+.full-bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+
+/* Yatay kaydırmalı şeritlerde kenar sol/sağ fade’i genişlet */
+.edge-fade-wide {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,1) 180px,
+    rgba(0,0,0,1) calc(100% - 180px),
+    rgba(0,0,0,0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,1) 180px,
+    rgba(0,0,0,1) calc(100% - 180px),
+    rgba(0,0,0,0) 100%
+  );
+}

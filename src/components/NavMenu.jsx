@@ -1,53 +1,80 @@
-import React, { useState, useEffect } from 'react'
-import { FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import { FaInstagram, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
-const NavMenu = () => {
-  const [darkMode, setDarkMode] = useState(true)
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode)
-  }, [darkMode])
-
+export default function NavMenu() {
   return (
-    <motion.aside
-      initial={{ x: -50, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 h-screen w-20 bg-black text-white flex flex-col justify-between items-center py-6 z-50 overflow-hidden"
+    <aside
+      className="
+        hidden lg:flex
+        fixed left-0 top-0 h-screen w-44
+        z-40 flex-col justify-between
+        bg-black/90 backdrop-blur supports-[backdrop-filter]:bg-black/75
+        border-r border-white/10
+        px-4 py-6
+      "
     >
-      {/* 🔵 LOGO */}
-      <div className="rotate-[-90deg] font-extrabold tracking-widest text-lg">BK</div>
+      {/* ÜST: Logo (büyütülmüş) */}
+      <div className="flex justify-center">
+        <a href="#home" className="block select-none">
+          <img
+            src="/logos/bklogo.png"
+            alt="BK SoftStudio Logo"
+            className="w-36 h-auto object-contain"
+          />
+        </a>
+      </div>
 
-      {/* 🔄 Dikey kayan yazı */}
-      <div className="relative flex-grow flex items-center justify-center overflow-hidden w-full">
-        <div className="absolute animate-slide-vert text-[10px] font-semibold rotate-[-90deg] whitespace-nowrap tracking-widest text-gray-300">
-          İşletmenize Dair Çözümler — BK SoftStudio
+      {/* ORTA: Slogan (dikey) */}
+      <div className="flex-1 flex items-center justify-center">
+        <span
+          className="
+            text-white/85 hover:text-white transition-colors
+            [writing-mode:vertical-rl] rotate-180 select-none
+            text-[14px] font-bold tracking-[0.45em] uppercase
+          "
+          title="Slogan"
+        >
+          Dijital,&nbsp;Hızlı,&nbsp;Modern&nbsp;Çözümler
+        </span>
+      </div>
+
+      {/* ALT: Sosyal ikonlar (Instagram, Mail, WhatsApp) */}
+      <div className="flex items-center justify-center">
+        <div className="flex items-center gap-3">
+          {/* Instagram */}
+          <a
+            href="https://instagram.com/bksoftstudio"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            className="p-1.5 rounded-lg hover:bg-white/10"
+            title="Instagram"
+          >
+            <FaInstagram className="text-lg" />
+          </a>
+
+          {/* E-posta */}
+          <a
+            href="mailto:info@bksoftstudio.com"
+            aria-label="E-posta"
+            className="p-1.5 rounded-lg hover:bg-white/10"
+            title="E-posta"
+          >
+            <FaEnvelope className="text-lg" />
+          </a>
+
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/905417617508"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="WhatsApp"
+            className="p-1.5 rounded-lg hover:bg-white/10"
+            title="WhatsApp"
+          >
+            <FaWhatsapp className="text-lg" />
+          </a>
         </div>
       </div>
-
-      {/* 🔗 Sosyal Medya + Tema */}
-      <div className="flex flex-col items-center space-y-4">
-        <a href="https://instagram.com/bksoftstudio" target="_blank" rel="noreferrer">
-          <FaInstagram className="hover:text-gray-400" />
-        </a>
-        <a href="https://github.com/burakkiris" target="_blank" rel="noreferrer">
-          <FaGithub className="hover:text-gray-400" />
-        </a>
-        <a href="https://linkedin.com/in/burakeneskiris" target="_blank" rel="noreferrer">
-          <FaLinkedin className="hover:text-gray-400" />
-        </a>
-
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          title="Tema Değiştir"
-          className="mt-4 px-2 py-1 border rounded-full bg-white text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 transition"
-        >
-          {darkMode ? '☀️' : '🌙'}
-        </button>
-      </div>
-    </motion.aside>
-  )
+    </aside>
+  );
 }
-
-export default NavMenu
