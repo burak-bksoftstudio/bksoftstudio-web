@@ -2,71 +2,208 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Scroll efektini yumuşat */
+/* =============================================
+   🎨 Apple-Style Modern Design System
+   ============================================= */
+
+/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
   height: 100%;
   overflow-y: auto;
 }
 
-/* Temaya göre arkaplan ve metin rengi */
-body {
-  @apply bg-white text-black dark:bg-gray-900 dark:text-white;
-
-  /* Scrollbar'ı gizle ama kaydırma kalsın */
-  scrollbar-width: none;          /* Firefox */
-  -ms-overflow-style: none;       /* IE/Edge */
-}
-
-body::-webkit-scrollbar {
-  display: none;                  /* Chrome/Safari */
-}
-/* Yumuşak kaydırma ve mobilde safe-area */
-html {
-  scroll-behavior: smooth;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
+/* Body Styling */
+body {
+  @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for all elements */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* iOS Safe Area */
 :root {
-  /* iOS çentik / safe area */
   --safe-top: env(safe-area-inset-top);
   --safe-bottom: env(safe-area-inset-bottom);
 }
+
 body {
   padding-top: var(--safe-top);
   padding-bottom: var(--safe-bottom);
 }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-/* Responsive okuma genişliği */
-main > section { margin-block: 48px; }
-@media (min-width: 1024px) {
-  main > section { margin-block: 64px; }
+/* =============================================
+   🎭 Custom Animations
+   ============================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* iOS safe area */
-:root { --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom); }
-body { padding-top: var(--safe-top); padding-bottom: var(--safe-bottom); }
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
-/* ==== Desktop yardımcıları (mobil etkilenmez) ==== */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+/* =============================================
+   ✨ Hover Effects
+   ============================================= */
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+}
+
+/* =============================================
+   📐 Layout Utilities
+   ============================================= */
+
+/* Responsive section spacing */
+main > section {
+  margin-block: 48px;
+}
+
 @media (min-width: 1024px) {
-  /* Yan bar 36 (9rem) olduğunda, kalan alanı tam kapla */
+  main > section {
+    margin-block: 64px;
+  }
+}
+
+/* Desktop sidebar offset */
+@media (min-width: 1024px) {
   .bleed-after-sidebar {
     position: relative;
-    left: 9rem;                   /* lg:pl-36 ile eşleşir */
-    width: calc(100vw - 9rem);    /* yan bar sonrası tüm genişlik */
+    left: 9rem;
+    width: calc(100vw - 9rem);
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 }
 
-/* Tam ekran "bleed" gerekirse (bu projede gerek kalmadı ama dursun) */
+/* Full bleed utility */
 .full-bleed {
   position: relative;
   left: 50%;
@@ -76,20 +213,122 @@ body { padding-top: var(--safe-top); padding-bottom: var(--safe-bottom); }
   width: 100vw;
 }
 
-/* Yatay kaydırmalı şeritlerde kenar sol/sağ fade’i genişlet */
-.edge-fade-wide {
+/* =============================================
+   🎯 Custom Scrollbar (Optional)
+   ============================================= */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* =============================================
+   🌈 Gradient Text
+   ============================================= */
+
+.gradient-text {
+  @apply bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600;
+  @apply bg-clip-text text-transparent;
+}
+
+.gradient-text-animate {
+  @apply bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600;
+  @apply bg-clip-text text-transparent;
+  background-size: 200% auto;
+  animation: gradient 3s linear infinite;
+}
+
+/* =============================================
+   🔳 Glass Morphism
+   ============================================= */
+
+.glass {
+  @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  @apply dark:bg-black/10 dark:border-white/10;
+}
+
+.glass-strong {
+  @apply bg-white/80 backdrop-blur-2xl border border-white/40;
+  @apply dark:bg-black/80 dark:border-white/20;
+}
+
+/* =============================================
+   🎪 Edge Fade for Horizontal Scrolls
+   ============================================= */
+
+.edge-fade {
   -webkit-mask-image: linear-gradient(
     to right,
-    rgba(0,0,0,0) 0px,
-    rgba(0,0,0,1) 180px,
-    rgba(0,0,0,1) calc(100% - 180px),
-    rgba(0,0,0,0) 100%
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 1) 40px,
+    rgba(0, 0, 0, 1) calc(100% - 40px),
+    rgba(0, 0, 0, 0) 100%
   );
   mask-image: linear-gradient(
     to right,
-    rgba(0,0,0,0) 0px,
-    rgba(0,0,0,1) 180px,
-    rgba(0,0,0,1) calc(100% - 180px),
-    rgba(0,0,0,0) 100%
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 1) 40px,
+    rgba(0, 0, 0, 1) calc(100% - 40px),
+    rgba(0, 0, 0, 0) 100%
   );
+}
+
+.edge-fade-wide {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 1) 180px,
+    rgba(0, 0, 0, 1) calc(100% - 180px),
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 1) 180px,
+    rgba(0, 0, 0, 1) calc(100% - 180px),
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* =============================================
+   🎬 Page Load Animation
+   ============================================= */
+
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: pageLoad 0.5s ease-in;
+}
+
+/* =============================================
+   🖱️ Selection Styling
+   ============================================= */
+
+::selection {
+  @apply bg-indigo-600 text-white;
+}
+
+::-moz-selection {
+  @apply bg-indigo-600 text-white;
 }

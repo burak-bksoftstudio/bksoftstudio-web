@@ -10,8 +10,19 @@ import "aos/dist/aos.css";
 // 🌌 Parallax Provider
 import { ParallaxProvider } from "react-scroll-parallax";
 
-// ✅ Uygulama ilk açıldığında dark mode aktif
-document.documentElement.classList.add("dark");
+// ✅ Dark mode initialization - Check user preference
+const initDarkMode = () => {
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+};
+
+initDarkMode();
 
 // AOS başlat
 AOS.init({
